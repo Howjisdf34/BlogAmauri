@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comprendiendo DDL - El Blog de las Bases de Datos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="header-content">
+            <span class="blog-badge">Estructuras de Datos</span>
+            <h1>Entendiendo el <span>DDL</span></h1>
+            <p>Una guía clara para aprender cómo se diseña y define el esqueleto de cualquier base de datos relacional.</p>
+            
+            <div class="author-info">
+                <div class="avatar">BD</div>
+                <span>Por Luis Amauri Alejandres Miranda</span>
+                <span>•</span>
+                <span>UPLC</span>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        
+        <article>
+            <h2>¿Qué es exactamente DDL?</h2>
+            <p>El <strong>Lenguaje de Definición de Datos</strong> (DDL, por sus siglas en inglés) es el pilar de SQL que se encarga del diseño estructural. Si imaginas que una base de datos es un edificio, el DDL no son los muebles ni las personas que viven dentro; es el plano arquitectónico, las paredes y los cimientos que sostienen todo.</p>
+            
+            <div class="image-area">
+                <div class="image-area">
+                <img src="img1.jpeg" alt="Arquitectura de tres esquemas en Base de Datos" class="blog-img">
+            </div>
+            </div>
+        </article>
+
+        <article>
+            <h2>El Flujo Estructural: Sus 4 Operaciones</h2>
+            <p>Olvídate de las tablas aburridas. El ciclo de vida de la estructura de tus datos se resume en cuatro acciones consecutivas que transforman el esquema:</p>
+            
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-title">1. CREATE (Crear)</div>
+                    <p>Es el punto de partida. Le da vida a un objeto completamente nuevo dentro del sistema, como una tabla o un índice.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">2. ALTER (Modificar)</div>
+                    <p>Ideal para cuando los requerimientos cambian. Te permite mutar la estructura existente, como añadir una columna de "teléfono" a tus usuarios.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">3. DROP (Eliminar)</div>
+                    <p>La opción definitiva. Borra el objeto del mapa de forma permanente. Desaparece tanto la estructura como lo que había dentro.</p>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-title">4. TRUNCATE (Vaciar)</div>
+                    <p>Una alternativa inteligente. Remueve de golpe todos los datos internos de una tabla, pero te deja el cascarón estructural intacto listo para volver a usarse.</p>
+                </div>
+            </div>
+        </article>
+
+        <article>
+            <h2>Un Ejemplo Práctico</h2>
+            <p>Llevar el DDL a la realidad es bastante intuitivo. Mira cómo interactúan estos comandos en un entorno real a través de este bloque de código ejecutable:</p>
+            
+            <pre>
+<span class="comment">-- Creamos la estructura inicial</span>
+<span class="keyword">CREATE TABLE</span> productos (
+    id INT PRIMARY KEY,
+    nombre VARCHAR(80),
+    precio DECIMAL(10,2)
+);
+
+<span class="comment">-- Decidimos agregar una columna nueva sin alterar los datos</span>
+<span class="keyword">ALTER TABLE</span> productos <span class="keyword">ADD</span> stock INT;
+
+<span class="comment">-- Si quisiéramos eliminar el catálogo por completo</span>
+<span class="keyword">DROP TABLE</span> productos;
+            </pre>
+
+            <div class="image-area">
+                <img src="img2.jpeg" alt="Estructura de la tabla productos en phpMyAdmin" class="blog-img">
+            </div>
+        </article>
+
+        <article>
+            <div class="alert-note">
+                <h3>⚠️ Una regla crítica: El Auto-Commit</h3>
+                <p>A diferencia de otras sentencias de bases de datos, los comandos DDL se guardan de forma <strong>inmediata y permanente</strong> en la mayoría de los motores (como MySQL). No existe un botón de "deshacer" (Rollback). Una vez ejecutas un DROP, no hay vuelta atrás.</p>
+            </div>
+        </article>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 Blog de Base de Datos • Recursos para Estudiantes de la UPLC</p>
+    </footer>
+
+</body>
+</html>
